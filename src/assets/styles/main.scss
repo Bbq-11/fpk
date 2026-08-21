@@ -1,0 +1,72 @@
+:root {
+  --app-font-family: 'Fira Sans', Arial, sans-serif;
+  --v-font-body: var(--app-font-family);
+  --v-font-heading: var(--app-font-family);
+
+  font-family: var(--app-font-family);
+  font-synthesis: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+body,
+.v-application,
+.v-overlay-container {
+  font-family: var(--app-font-family);
+}
+
+.v-application {
+  color: rgb(var(--v-theme-on-background));
+  background: rgb(var(--v-theme-background));
+}
+
+.v-btn {
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.app-container {
+  max-width: 1200px !important;
+}
+
+.text-wrap-anywhere {
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

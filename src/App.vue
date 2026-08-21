@@ -1,11 +1,39 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
-</template>
+  <VApp>
+    <VAppBar
+      class="border-b border-border"
+      color="surface"
+      height="72"
+      elevation="0">
+      <VContainer class="app-container d-flex align-center py-0">
+        <VBtn
+          :to="{ name: 'catalog' }"
+          class="pa-0 pr-2"
+          color="on-surface"
+          variant="plain"
+          :ripple="false"
+          aria-label="Витрина туристических поездов">
+          <VAvatar
+            class="mr-3 text-caption font-weight-bold"
+            color="secondary"
+            rounded="lg"
+            size="40">
+            ФПК
+          </VAvatar>
 
-<style scoped></style>
+          <span class="text-body-1 font-weight-bold">
+            Туристические поезда
+          </span>
+        </VBtn>
+      </VContainer>
+    </VAppBar>
+
+    <VMain class="bg-background">
+      <RouterView />
+    </VMain>
+  </VApp>
+</template>
