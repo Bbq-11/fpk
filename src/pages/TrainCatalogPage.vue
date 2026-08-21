@@ -176,15 +176,18 @@ watch(
 
       <VRow
         v-if="filteredTrains.length"
-        class="ma-n2">
+        class="ma-n2"
+        :class="{ 'gr-1': !smAndUp }">
         <VCol
           v-for="train in filteredTrains"
           :key="train.id"
-          class="d-flex pa-2"
+          class="d-flex pa-1"
           cols="12"
           md="6"
           lg="4">
-          <TrainCard :train="train" />
+          <TrainCard
+            :train="train"
+            :selected-month="selectedMonth" />
         </VCol>
       </VRow>
 

@@ -13,13 +13,21 @@ import {
 
 const props = defineProps<{
   train: Train
+  selectedMonth?: string
 }>()
 
 const route = useRoute()
 
-const nearestDeparture = computed(() =>
-  getNearDeparture(props.train.departures),
-)
+const nearestDeparture = computed(() => {
+  const departures =
+    props.selectedMonth ?
+      props.train.departures.filter(
+        (date) => date.slice(5, 7) === props.selectedMonth,
+      )
+    : props.train.departures
+
+  return getNearDeparture(departures)
+})
 
 const detailsRoute = computed(() => ({
   name: 'train-details',
