@@ -77,7 +77,13 @@ test('каталог фильтрует список, открывает пое�
   await expect(trainCard).toHaveCount(1)
   await expect(trainCard).toContainText('Байкальская сказка')
 
-  await trainCard.getByRole('link').click()
+  const detailsLink = trainCard.getByRole('link')
+
+  await detailsLink.click()
+
+  await expect(page).toHaveURL(/\/trains\/baikalskaya-skazka(?:\?|$)/, {
+    timeout: 15_000,
+  })
 
   await expect(
     page.getByRole('heading', {
