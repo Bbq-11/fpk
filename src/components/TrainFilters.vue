@@ -106,7 +106,9 @@ const monthItems = computed<SelectOption[]>(() => [
         @click="emit('reset')" />
 
       <VCardText class="filters__content pa-3 pa-sm-4 pa-md-6">
-        <VRow class="ma-n2 align-center">
+        <VRow
+          class="ma-n2 align-center"
+          no-gutters>
           <VCol
             class="pa-2"
             cols="12"
