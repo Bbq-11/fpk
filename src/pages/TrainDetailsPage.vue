@@ -78,15 +78,18 @@ watch(
                 class="text-display-small text-sm-display-medium text-md-display-large font-weight-bold mt-0 mb-2 text-wrap-anywhere">
                 {{ train.name }}
               </h1>
-              <VExpandTransition>
-                <p
-                  v-show="isDescExpanded"
-                  id="train-description"
-                  class="text-body-medium text-sm-body-large text-muted mt-0 mb-2">
-                  {{ train.description }}
-                </p>
-              </VExpandTransition>
-
+              <div
+                id="train-description"
+                class="description-collapse"
+                :class="{ 'description-collapse--expanded': isDescExpanded }"
+                :aria-hidden="!isDescExpanded">
+                <div class="description-collapse__inner">
+                  <p
+                    class="text-body-medium text-sm-body-large text-muted mt-0 mb-2">
+                    {{ train.description }}
+                  </p>
+                </div>
+              </div>
               <VBtn
                 class="px-0"
                 color="primary"
@@ -164,9 +167,12 @@ watch(
               <VCol
                 cols="12"
                 md="3">
-                <dt class="text-body-medium text-muted mb-1">Длительность</dt>
+                <dt class="text-body-small text-sm-body-medium text-muted mb-1">
+                  Длительность
+                </dt>
 
-                <dd class="text-body-large ma-0 font-weight-bold">
+                <dd
+                  class="text-body-medium text-sm-body-large ma-0 font-weight-bold">
                   {{ formatDuration(train.duration_days) }}
                 </dd>
               </VCol>
@@ -176,7 +182,7 @@ watch(
       </VCard>
 
       <VCard
-        class="rounded-xl bg-surface text-on-surface pa-3 pa-sm-4 pa-md-6"
+        class="rounded-xl bg-surface text-on-surface pa-3 pa-sm-4 pa-md-6 mb-3 mb-sm-4"
         variant="flat">
         <h2
           class="text-title-large text-sm-headline-small text-md-headline-medium font-weight-bold ma-0 mb-3 mb-sm-4">
@@ -200,9 +206,7 @@ watch(
         </VCardText>
       </VCard>
 
-      <VRow
-        class="mt-1 mt-sm-2"
-        align="stretch">
+      <VRow class="align-stretch ga-3 ga-sm-4">
         <VCol
           class="d-flex"
           cols="12"
@@ -314,6 +318,24 @@ watch(
     :deep(.v-list-item__spacer) {
       width: 10px;
     }
+  }
+}
+.description-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 180ms ease,
+    opacity 140ms ease;
+
+  &--expanded {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  &__inner {
+    min-height: 0;
+    overflow: hidden;
   }
 }
 </style>
