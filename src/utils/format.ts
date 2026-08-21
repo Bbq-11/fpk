@@ -33,10 +33,9 @@ export const formatRoute = (route: string[]): string => {
   const lastCity = route[route.length - 1]
 
   if (!firstCity) return 'Маршрут уточняется'
+  if (route.length === 1 || !lastCity) return firstCity
 
-  return lastCity && lastCity !== firstCity ?
-      `${firstCity} → ${lastCity}`
-    : firstCity
+  return `${firstCity} → ${lastCity}`
 }
 
 const toLocalIso = (date: Date): string => {
