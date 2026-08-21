@@ -1,4 +1,4 @@
-import { createVuetify, useDisplay } from 'vuetify'
+import { createVuetify } from 'vuetify'
 import type { ThemeDefinition } from 'vuetify'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import { ru } from 'vuetify/locale'

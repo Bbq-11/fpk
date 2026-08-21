@@ -131,6 +131,7 @@ const monthItems = computed<SelectOption[]>(() => [
             md="3">
             <VSelect
               v-model="region"
+              data-testid="region-filter"
               class="text-body-medium text-sm-body-large"
               :items="regionItems"
               :menu-props="menuProps"
@@ -148,6 +149,7 @@ const monthItems = computed<SelectOption[]>(() => [
             md="3">
             <VSelect
               v-model="month"
+              data-testid="month-filter"
               class="text-body-medium text-sm-body-large"
               :items="monthItems"
               :menu-props="menuProps"

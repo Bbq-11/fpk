@@ -30,7 +30,7 @@ export const formatDuration = (days: number): string => {
 
 export const formatRoute = (route: string[]): string => {
   const firstCity = route[0]
-  const lastCity = route.at(-1)
+  const lastCity = route[route.length - 1]
 
   if (!firstCity) return 'Маршрут уточняется'
 
